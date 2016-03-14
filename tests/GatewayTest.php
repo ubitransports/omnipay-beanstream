@@ -22,7 +22,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testPurchase()
     {
-        $request = $this->gateway->authorize($this->options);
+        $request = $this->gateway->purchase($this->options);
         $this->assertInstanceOf('Omnipay\Beanstream\Message\PurchaseRequest', $request);
     }
 }
