@@ -1,7 +1,7 @@
 {
     "name": "lemonstand/omnipay-beanstream",
     "type": "library",
-    "description": "Elavon payments driver for the Omnipay payment processing library",
+    "description": "Beanstream driver for the Omnipay payment processing library",
     "keywords": [
         "beanstream",
         "gateway",

@@ -3,7 +3,7 @@
 use Omnipay\Common\Message\AbstractResponse;
 use Omnipay\Common\Message\RequestInterface;
 
-class BeanstreamResponse extends AbstractResponse
+class Response extends AbstractResponse
 {
     public function isSuccessful()
     {

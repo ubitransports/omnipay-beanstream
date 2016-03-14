@@ -1,6 +1,6 @@
 <?php namespace Omnipay\Beanstream\Message;
 
-class BeanstreamAuthorizeRequest extends BeanstreamAbstractRequest
+class AuthorizeRequest extends AbstractRequest
 {
     protected $complete = false;
 

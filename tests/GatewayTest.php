@@ -7,15 +7,22 @@ class GatewayTest extends GatewayTestCase
     public function setUp()
     {
         parent::setUp();
+        $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
+        $this->options = array(
+            'amount'    => '10.00',
+            'card'      => $this->getValidCard(),
+        );
     }
 
     public function testAuthorize()
     {
-        $this->assertTrue(true);
+        $request = $this->gateway->authorize($this->options);
+        $this->assertInstanceOf('Omnipay\Vantiv\Message\AuthorizeRequest', $request);
     }
 
     public function testPurchase()
     {
-        $this->assertTrue(true);
+        $request = $this->gateway->authorize($this->options);
+        $this->assertInstanceOf('Omnipay\Vantiv\Message\PurchaseRequest', $request);
     }
 }

@@ -2,11 +2,13 @@
 
 use Omnipay\Common\CreditCard;
 
-abstract class BeanstreamAbstractRequest extends \Omnipay\Common\Message\AbstractRequest
+abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
+    protected $endpoint = 'https://www.beanstream.com/api/v1';
+
     protected function getEndpoint()
     {
-        return 'https://www.beanstream.com/api/v1';
+        return $this->endpoint;
     }
 
     public function getOrderNumber()

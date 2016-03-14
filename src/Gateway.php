@@ -3,9 +3,9 @@
 use Omnipay\Common\AbstractGateway;
 
 /**
- * Elavon's Converge Gateway
+ * Beanstream Gateway
  *
- * @link https://www.myvirtualmerchant.com/VirtualMerchant/
+ * @link https://www.beanstream.com/
  */
 class Gateway extends AbstractGateway
 {
@@ -70,7 +70,7 @@ class Gateway extends AbstractGateway
      */
     public function authorize(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Beanstream\Message\BeanstreamAuthorizeRequest', $parameters);
+        return $this->createRequest('\Omnipay\Beanstream\Message\AuthorizeRequest', $parameters);
     }
 
     /**
@@ -79,6 +79,6 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\Beanstream\Message\BeanstreamPurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Beanstream\Message\PurchaseRequest', $parameters);
     }
 }
