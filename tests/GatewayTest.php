@@ -2,7 +2,7 @@
 
 use Omnipay\Tests\GatewayTestCase;
 
-class BeanstreamGatewayTest extends GatewayTestCase
+class GatewayTest extends GatewayTestCase
 {
     public function setUp()
     {

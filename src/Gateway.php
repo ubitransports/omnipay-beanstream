@@ -7,7 +7,7 @@ use Omnipay\Common\AbstractGateway;
  *
  * @link https://www.myvirtualmerchant.com/VirtualMerchant/
  */
-class BeanstreamGateway extends AbstractGateway
+class Gateway extends AbstractGateway
 {
     public function getName()
     {
