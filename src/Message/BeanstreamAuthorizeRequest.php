@@ -66,10 +66,11 @@ class BeanstreamAuthorizeRequest extends BeanstreamAbstractRequest
 
     public function sendData($data)
     {
+        $authHeader = base64_encode("{$this->getMerchantId()}:{$this->getApiPasscode()}");
         $httpResponse = $this->httpClient->post("{$this->getEndpoint()}/payments", null, $data)
-            ->setHeader('Authorization', 'Passcode ' . base64_encode("{$this->getMerchantId()}:{$this->getApiPasscode()}"))
+            ->setHeader('Authorization', "Passcode $authHeader")
             ->send();
-
-        return $this->createResponse($httpResponse->json());
+        $this->response = $this->createResponse($httpResponse->json());
+        return $this->response;
     }
 }
