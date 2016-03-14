@@ -76,19 +76,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('payment_method');
     }
 
-    public function setToken($value)
+    public function setPaymentMethod($value)
     {
         return $this->setParameter('payment_method', $value);
-    }
-
-    public function getTestEndpoint()
-    {
-        return $this->testEndpoint;
-    }
-
-    public function getLiveEndpoint()
-    {
-        return $this->liveEndpoint;
     }
 
     protected function createResponse($response)
