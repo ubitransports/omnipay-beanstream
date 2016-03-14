@@ -17,12 +17,12 @@ class GatewayTest extends GatewayTestCase
     public function testAuthorize()
     {
         $request = $this->gateway->authorize($this->options);
-        $this->assertInstanceOf('Omnipay\Vantiv\Message\AuthorizeRequest', $request);
+        $this->assertInstanceOf('Omnipay\Beanstream\Message\AuthorizeRequest', $request);
     }
 
     public function testPurchase()
     {
         $request = $this->gateway->authorize($this->options);
-        $this->assertInstanceOf('Omnipay\Vantiv\Message\PurchaseRequest', $request);
+        $this->assertInstanceOf('Omnipay\Beanstream\Message\PurchaseRequest', $request);
     }
 }
