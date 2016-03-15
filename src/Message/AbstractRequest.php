@@ -121,8 +121,34 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('payment_method', $value);
     }
 
-    protected function createResponse($response)
+    /**
+     * Get HTTP Method.
+     *
+     * This is nearly always POST but can be over-ridden in sub classes.
+     *
+     * @return string
+     */
+    public function getHttpMethod()
     {
-        return $this->response = new BeanstreamResponse($this, $response);
+        return 'POST';
+    }
+
+    public function sendData($data)
+    {
+        $authHeader = base64_encode("{$this->getMerchantId()}:{$this->getApiPasscode()}");
+
+        $httpRequest = $this->httpClient->createRequest(
+            $this->getHttpMethod(),
+            $this->getEndpoint(),
+            null,
+            $data
+        );
+
+        $httpResponse = $httpRequest
+            ->setHeader('Authorization', "Passcode $authHeader")
+            ->setHeader('Content-Type', 'application/json')
+            ->send();
+
+        return $this->response = new Response($this, $httpResponse->json());
     }
 }

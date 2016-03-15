@@ -4,6 +4,11 @@ class AuthorizeRequest extends AbstractRequest
 {
     protected $complete = false;
 
+    protected function getEndpoint()
+    {
+        return $this->endpoint . '/payments';
+    }
+
     public function getData()
     {
         $this->validate('amount', 'card');
@@ -62,15 +67,5 @@ class AuthorizeRequest extends AbstractRequest
         }
 
         return $data;
-    }
-
-    public function sendData($data)
-    {
-        $authHeader = base64_encode("{$this->getMerchantId()}:{$this->getApiPasscode()}");
-        $httpResponse = $this->httpClient->post("{$this->getEndpoint()}/payments", null, $data)
-            ->setHeader('Authorization', "Passcode $authHeader")
-            ->send();
-        $this->response = $this->createResponse($httpResponse->json());
-        return $this->response;
     }
 }
