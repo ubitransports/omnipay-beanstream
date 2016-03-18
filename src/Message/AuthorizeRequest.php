@@ -23,25 +23,25 @@ class AuthorizeRequest extends AbstractRequest
             'payment_method' => $this->getPaymentMethod(),
             'billing' => array(
                 'name' => $this->getCard()->getBillingName(),
-                'address_line_1' => $this->getCard()->getBillingAddress1(),
-                'address_line_2' => $this->getCard()->getBillingAddress2(),
+                'address_line1' => $this->getCard()->getBillingAddress1(),
+                'address_line2' => $this->getCard()->getBillingAddress2(),
                 'city' => $this->getCard()->getBillingCity(),
                 'province' => $this->getCard()->getBillingState(),
                 'country' => $this->getCard()->getBillingCountry(),
                 'postal_code' => $this->getCard()->getBillingPostcode(),
                 'phone_number' => $this->getCard()->getBillingPhone(),
-                'email' => $this->getCard()->getEmail(),
+                'email_address' => $this->getCard()->getEmail(),
             ),
             'shipping' => array(
                 'name' => $this->getCard()->getShippingName(),
-                'address_line_1' => $this->getCard()->getShippingAddress1(),
-                'address_line_2' => $this->getCard()->getShippingAddress2(),
+                'address_line1' => $this->getCard()->getShippingAddress1(),
+                'address_line2' => $this->getCard()->getShippingAddress2(),
                 'city' => $this->getCard()->getShippingCity(),
                 'province' => $this->getCard()->getShippingState(),
                 'country' => $this->getCard()->getShippingCountry(),
                 'postal_code' => $this->getCard()->getShippingPostcode(),
                 'phone_number' => $this->getCard()->getShippingPhone(),
-                'email' => $this->getCard()->getEmail(),
+                'email_address' => $this->getCard()->getEmail(),
             )
         );
 
