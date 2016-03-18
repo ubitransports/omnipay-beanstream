@@ -52,7 +52,7 @@ class AuthorizeRequest extends AbstractRequest
                 'expiry_month' => $this->getCard()->getExpiryDate('m'),
                 'expiry_year' => $this->getCard()->getExpiryDate('y'),
                 'cvd' => $this->getCard()->getCvv(),
-                'complete' => ($this->complete),
+                'complete' => $this->complete,
             );
         }
 

@@ -1,7 +1,5 @@
 <?php namespace Omnipay\Beanstream\Message;
 
-use Omnipay\Common\CreditCard;
-
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     protected $endpoint = 'https://www.beanstream.com/api/v1';
@@ -19,26 +17,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setMerchantId($value)
     {
         return $this->setParameter('merchantId', $value);
-    }
-
-    public function getUsername()
-    {
-        return $this->getParameter('username');
-    }
-
-    public function setUsername($value)
-    {
-        return $this->setParameter('username', $value);
-    }
-
-    public function getPassword()
-    {
-        return $this->getParameter('password');
-    }
-
-    public function setPassword($value)
-    {
-        return $this->setParameter('password', $value);
     }
 
     public function getApiPasscode()
@@ -121,13 +99,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('payment_method', $value);
     }
 
-    /**
-     * Get HTTP Method.
-     *
-     * This is nearly always POST but can be over-ridden in sub classes.
-     *
-     * @return string
-     */
     public function getHttpMethod()
     {
         return 'POST';
@@ -135,18 +106,26 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function sendData($data)
     {
-        $authHeader = base64_encode("{$this->getMerchantId()}:{$this->getApiPasscode()}");
+        // Don't throw exceptions for 4xx errors
+        $this->httpClient->getEventDispatcher()->addListener(
+            'request.error',
+            function ($event) {
+                if ($event['response']->isClientError()) {
+                    $event->stopPropagation();
+                }
+            }
+        );
 
         $httpRequest = $this->httpClient->createRequest(
             $this->getHttpMethod(),
             $this->getEndpoint(),
             null,
-            $data
+            json_encode($data)
         );
 
         $httpResponse = $httpRequest
-            ->setHeader('Authorization', "Passcode $authHeader")
             ->setHeader('Content-Type', 'application/json')
+            ->setHeader('Authorization', 'Passcode ' . base64_encode($this->getMerchantId() . ':' . $this->getApiPasscode()))
             ->send();
 
         return $this->response = new Response($this, $httpResponse->json());
