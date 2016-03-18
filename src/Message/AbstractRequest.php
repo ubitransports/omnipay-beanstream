@@ -29,6 +29,27 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('apiPasscode', $value);
     }
 
+    public function getUsername()
+    {
+        return $this->getParameter('username');
+    }
+
+    public function setUsername($value)
+    {
+        return $this->setParameter('username', $value);
+    }
+
+    public function getPassword()
+    {
+        return $this->getParameter('password');
+    }
+
+    public function setPassword($value)
+    {
+        return $this->setParameter('password', $value);
+    }
+
+
     public function getOrderNumber()
     {
         return $this->getParameter('order_number');
@@ -106,6 +127,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function sendData($data)
     {
+        $header = base64_encode($this->getMerchantId() . ':' . $this->getApiPasscode());
         // Don't throw exceptions for 4xx errors
         $this->httpClient->getEventDispatcher()->addListener(
             'request.error',
@@ -124,8 +146,14 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         );
 
         $httpResponse = $httpRequest
-            ->setHeader('Content-Type', 'application/json')
-            ->setHeader('Authorization', 'Passcode ' . base64_encode($this->getMerchantId() . ':' . $this->getApiPasscode()))
+            ->setHeader(
+                'Content-Type',
+                'application/json'
+            )
+            ->setHeader(
+                'Authorization',
+                'Passcode ' . $header
+            )
             ->send();
 
         return $this->response = new Response($this, $httpResponse->json());
