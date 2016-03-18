@@ -22,11 +22,6 @@ class Response extends AbstractResponse
 
     public function getMessage()
     {
-        return isset($this->data['message']) ? $this->data['message'] : null;
-    }
-
-    public function getMessage()
-    {
         return isset($this->data['message_id']) ? $this->data['message_id'] : null;
     }
 
