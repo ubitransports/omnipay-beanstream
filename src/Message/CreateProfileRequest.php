@@ -22,7 +22,7 @@ class CreateProfileRequest extends AbstractProfileRequest
             );
 
             if (empty($this->getBilling())) {
-                $data['billing'] => array(
+                $data['billing'] = array(
                     'name' => $this->getCard()->getBillingName(),
                     'address_line1' => $this->getCard()->getBillingAddress1(),
                     'address_line2' => $this->getCard()->getBillingAddress2(),

@@ -69,7 +69,7 @@ class GatewayTest extends GatewayTestCase
                 ),
                 'token' => array(
                     'name' => 'token-test-name',
-                    'code' => 'token->test->code'
+                    'code' => 'token-test-code'
                 )
             )
         );
@@ -149,7 +149,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testFetchProfileCards()
     {
-        $request = $this->gateway->createProfileCard(
+        $request = $this->gateway->fetchProfileCards(
             array(
                 'profileId' => 1
             )
@@ -161,7 +161,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testUpdateProfileCard()
     {
-        $request = $this->gateway->createProfileCard(
+        $request = $this->gateway->updateProfileCard(
             array(
                 'profileId' => 1,
                 'cardId' => 2,
@@ -176,7 +176,7 @@ class GatewayTest extends GatewayTestCase
 
     public function testDeleteProfileCard()
     {
-        $request = $this->gateway->createProfileCard(
+        $request = $this->gateway->deleteProfileCard(
             array(
                 'profileId' => 1,
                 'cardId' => 2

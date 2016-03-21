@@ -1,6 +1,6 @@
 <?php namespace Omnipay\Beanstream\Message;
 
-class AbstractProfileRequest extends AbstractRequest
+abstract class AbstractProfileRequest extends AbstractRequest
 {
     protected $endpoint = 'https://www.beanstream.com/api/v1/profiles';
 

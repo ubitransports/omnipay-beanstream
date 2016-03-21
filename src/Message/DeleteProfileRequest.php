@@ -2,6 +2,11 @@
 
 class DeleteProfileRequest extends AbstractProfileRequest
 {
+    public function getData()
+    {
+        return [];
+    }
+
     protected function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId();

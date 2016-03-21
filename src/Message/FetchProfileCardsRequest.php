@@ -1,6 +1,6 @@
 <?php namespace Omnipay\Beanstream\Message;
 
-class FetchProfileCardRequest extends FetchProfileRequest
+class FetchProfileCardsRequest extends FetchProfileRequest
 {
     protected function getEndpoint()
     {

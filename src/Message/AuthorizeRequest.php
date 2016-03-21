@@ -47,7 +47,7 @@ class AuthorizeRequest extends AbstractRequest
                     'postal_code' => $this->getCard()->getBillingPostcode(),
                     'phone_number' => $this->getCard()->getBillingPhone(),
                     'email_address' => $this->getCard()->getEmail(),
-                )
+                );
             }
 
             if (empty($this->getShipping())) {
@@ -61,7 +61,7 @@ class AuthorizeRequest extends AbstractRequest
                     'postal_code' => $this->getCard()->getBillingPostcode(),
                     'phone_number' => $this->getCard()->getBillingPhone(),
                     'email_address' => $this->getCard()->getEmail(),
-                )
+                );
             }
         }
 
