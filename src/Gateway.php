@@ -66,7 +66,7 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Beanstream\Message\BeanstreamAuthorizeRequest
+     * @return \Omnipay\Beanstream\Message\AuthorizeRequest
      */
     public function authorize(array $parameters = array())
     {
@@ -75,10 +75,37 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return \Omnipay\Beanstream\Message\BeanstreamPurchaseRequest
+     * @return \Omnipay\Beanstream\Message\PurchaseRequest
      */
     public function purchase(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\Beanstream\Message\PurchaseRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\CreateProfileRequest
+     */
+    public function createProfile(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\CreateProfileRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\FetchProfileRequest
+     */
+    public function fetchProfile(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\FetchProfileRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\UpdateProfileRequest
+     */
+    public function updateProfile(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\UpdateProfileRequest', $parameters);
     }
 }
