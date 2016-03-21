@@ -47,7 +47,7 @@ class GatewayTest extends GatewayTestCase
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileRequest', $request);
         $this->assertSame('test-language', $request->getLanguage());
-        $this->assertSame('test-comment', $request->getComment();
+        $this->assertSame('test-comment', $request->getComment());
         $this->assertSame('POST', $request->getHttpMethod());
     }
 
@@ -66,7 +66,7 @@ class GatewayTest extends GatewayTestCase
                     'province' => 'bc',
                     'postal_code' => 'H0H0H0',
                     'phone_number' => '1 (555) 555-5555'
-                )
+                ),
                 'token' => array(
                     'name' => 'token-test-name',
                     'code' => 'token->test->code'
@@ -147,19 +147,6 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('POST', $request->getHttpMethod());
     }
 
-    public function testCreateProfileCard()
-    {
-        $request = $this->gateway->createProfileCard(
-            array(
-                'profileId' => 1,
-                'card' => $this->getValidCard()
-            )
-        );
-        $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileCardRequest', $request);
-        $this->assertSame(1, $request->getProfileId());
-        $this->assertSame('POST', $request->getHttpMethod());
-    }
-
     public function testFetchProfileCards()
     {
         $request = $this->gateway->createProfileCard(
@@ -187,7 +174,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('PUT', $request->getHttpMethod());
     }
 
-    public function testUpdateProfileCard()
+    public function testDeleteProfileCard()
     {
         $request = $this->gateway->createProfileCard(
             array(
