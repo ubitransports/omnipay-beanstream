@@ -76,20 +76,20 @@ class GatewayTest extends GatewayTestCase
         $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileRequest', $request);
         $this->assertSame('test-language', $request->getLanguage());
         $this->assertSame('test-comment', $request->getComment());
-        // $this->assertSame(array(
-        //     'name' => 'test mann',
-        //     'email_address' => 'testmann@email.com',
-        //     'street_address1' => '123 Test St',
-        //     'street_address2' => '',
-        //     'city' => 'vancouver',
-        //     'province' => 'bc',
-        //     'postal_code' => 'H0H0H0',
-        //     'phone_number' => '1 (555) 555-5555'
-        // ), $request->getBilling());
-        // $this->assertSame('token' => array(
-        //     'name' => 'token-test-name',
-        //     'code' => 'token->test->code'
-        // ), $request->getToken());
+        $this->assertSame(array(
+            'name' => 'test mann',
+            'email_address' => 'testmann@email.com',
+            'street_address1' => '123 Test St',
+            'street_address2' => '',
+            'city' => 'vancouver',
+            'province' => 'bc',
+            'postal_code' => 'H0H0H0',
+            'phone_number' => '1 (555) 555-5555'
+        ), $request->getBilling());
+        $this->assertSame(array(
+            'name' => 'token-test-name',
+            'code' => 'token-test-code'
+        ), $request->getToken());
         $this->assertSame('POST', $request->getHttpMethod());
     }
 
