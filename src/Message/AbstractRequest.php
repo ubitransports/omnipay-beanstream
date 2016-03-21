@@ -121,22 +121,22 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getBilling()
     {
-        return $this->setParameter('billing', $value);
+        return $this->getParameter('billing');
     }
 
     public function setBilling()
     {
-        return $this->getParameter('billing');
+        return $this->setParameter('billing', $value);
     }
 
     public function getShipping()
     {
-        return $this->setParameter('shipping', $value);
+        return $this->getParameter('shipping');
     }
 
     public function setShipping()
     {
-        return $this->getParameter('shipping');
+        return $this->setParameter('shipping', $value);
     }
 
     public function getHttpMethod()
