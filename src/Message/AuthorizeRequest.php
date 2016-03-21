@@ -62,7 +62,7 @@ class AuthorizeRequest extends AbstractRequest
         }
 
         if ($this->getToken()) {
-            $data['token'] = getToken();
+            $data['token'] = $this->getToken();
             $data['token']['complete'] = $this->complete;
         }
 
