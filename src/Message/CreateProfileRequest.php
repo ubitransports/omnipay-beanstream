@@ -8,7 +8,8 @@ class CreateProfileRequest extends AbstractProfileRequest
 
         $data = array(
             'language' => $this->getLanguage(),
-            'comment' => $this->getComments()
+            'comment' => $this->getComment(),
+            'billing' => $this->getBilling()
         );
 
         if ($this->getCard()) {
@@ -20,17 +21,19 @@ class CreateProfileRequest extends AbstractProfileRequest
                 'cvd' => $this->getCard()->getCvv(),
             );
 
-            $data['billing'] => array(
-                'name' => $this->getCard()->getBillingName(),
-                'address_line1' => $this->getCard()->getBillingAddress1(),
-                'address_line2' => $this->getCard()->getBillingAddress2(),
-                'city' => $this->getCard()->getBillingCity(),
-                'province' => $this->getCard()->getBillingState(),
-                'country' => $this->getCard()->getBillingCountry(),
-                'postal_code' => $this->getCard()->getBillingPostcode(),
-                'phone_number' => $this->getCard()->getBillingPhone(),
-                'email_address' => $this->getCard()->getEmail(),
-            );
+            if (empty($this->getBilling())) {
+                $data['billing'] => array(
+                    'name' => $this->getCard()->getBillingName(),
+                    'address_line1' => $this->getCard()->getBillingAddress1(),
+                    'address_line2' => $this->getCard()->getBillingAddress2(),
+                    'city' => $this->getCard()->getBillingCity(),
+                    'province' => $this->getCard()->getBillingState(),
+                    'country' => $this->getCard()->getBillingCountry(),
+                    'postal_code' => $this->getCard()->getBillingPostcode(),
+                    'phone_number' => $this->getCard()->getBillingPhone(),
+                    'email_address' => $this->getCard()->getEmail(),
+                );
+            }
         }
 
         if ($this->getToken()) {

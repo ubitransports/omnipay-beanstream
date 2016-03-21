@@ -23,4 +23,14 @@ class AbstractProfileRequest extends AbstractRequest
     {
         return $this->setParameter('cardId', $value);
     }
+
+    public function getComment()
+    {
+        return $this->getParameter('comment');
+    }
+
+    public function setComment($value)
+    {
+        return $this->setParameter('comment', $value);
+    }
 }
