@@ -108,4 +108,49 @@ class Gateway extends AbstractGateway
     {
         return $this->createRequest('\Omnipay\Beanstream\Message\UpdateProfileRequest', $parameters);
     }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\DeleteProfileRequest
+     */
+    public function deleteProfile(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\DeleteProfileRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\CreateProfileCardRequest
+     */
+    public function createProfileCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\CreateProfileCardRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\FetchProfileCardsRequest
+     */
+    public function fetchProfileCards(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\FetchProfileCardsRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\UpdateProfileCardsRequest
+     */
+    public function updateProfileCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\UpdateProfileCardRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     * @return \Omnipay\Beanstream\Message\DeleteProfileCardRequest
+     */
+    public function deleteProfileCard(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\DeleteProfileCardRequest', $parameters);
+    }
 }
