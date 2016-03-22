@@ -34,6 +34,16 @@ class Gateway extends AbstractGateway
         return $this->setParameter('merchantId', $value);
     }
 
+    public function getApiPasscode()
+    {
+        return $this->getParameter('apiPasscode');
+    }
+
+    public function setApiPasscode($value)
+    {
+        return $this->setParameter('apiPasscode', $value);
+    }
+
     public function getUsername()
     {
         return $this->getParameter('username');
@@ -52,16 +62,6 @@ class Gateway extends AbstractGateway
     public function setPassword($value)
     {
         return $this->setParameter('password', $value);
-    }
-
-    public function getApiPasscode()
-    {
-        return $this->getParameter('apiPasscode');
-    }
-
-    public function setApiPasscode($value)
-    {
-        return $this->setParameter('apiPasscode', $value);
     }
 
     /**

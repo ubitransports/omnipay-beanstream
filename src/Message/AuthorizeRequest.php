@@ -4,7 +4,7 @@ class AuthorizeRequest extends AbstractRequest
 {
     protected $complete = false;
 
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/payments';
     }
@@ -36,7 +36,7 @@ class AuthorizeRequest extends AbstractRequest
                 'complete' => $this->complete,
             );
 
-            if (empty($this->getBilling())) {
+            if (!$this->getBilling()) {
                 $data['billing'] = array(
                     'name' => $this->getCard()->getBillingName(),
                     'address_line1' => $this->getCard()->getBillingAddress1(),
@@ -50,7 +50,7 @@ class AuthorizeRequest extends AbstractRequest
                 );
             }
 
-            if (empty($this->getShipping())) {
+            if (!$this->getShipping()) {
                 $data['shipping'] = array(
                     'name' => $this->getCard()->getBillingName(),
                     'address_line1' => $this->getCard()->getBillingAddress1(),

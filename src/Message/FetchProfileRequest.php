@@ -4,10 +4,10 @@ class FetchProfileRequest extends AbstractProfileRequest
 {
     public function getData()
     {
-        return [];
+        return array();
     }
 
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId();
     }

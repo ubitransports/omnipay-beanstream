@@ -2,7 +2,7 @@
 
 class CreateProfileCardRequest extends AbstractProfileRequest
 {
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId() . '/cards';
     }

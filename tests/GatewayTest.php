@@ -14,8 +14,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->authorize(
             array(
-                'amount' => '10.00',
-                'card' => $this->getValidCard()
+                'amount' => '10.00'
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\AuthorizeRequest', $request);
@@ -27,8 +26,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->purchase(
             array(
-                'amount' => '10.00',
-                'card' => $this->getValidCard()
+                'amount' => '10.00'
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\PurchaseRequest', $request);
@@ -41,8 +39,7 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->createProfile(
             array(
                 'language' => 'test-language',
-                'comment' => 'test-comment',
-                'card' => $this->getValidCard()
+                'comment' => 'test-comment'
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileRequest', $request);
@@ -111,8 +108,7 @@ class GatewayTest extends GatewayTestCase
             array(
                 'profileId' => 1,
                 'language' => 'test-language',
-                'comment' => 'test-comment',
-                'card' => $this->getValidCard()
+                'comment' => 'test-comment'
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\UpdateProfileRequest', $request);
@@ -138,8 +134,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->createProfileCard(
             array(
-                'profileId' => 1,
-                'card' => $this->getValidCard()
+                'profileId' => 1
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileCardRequest', $request);
@@ -164,8 +159,7 @@ class GatewayTest extends GatewayTestCase
         $request = $this->gateway->updateProfileCard(
             array(
                 'profileId' => 1,
-                'cardId' => 2,
-                'card' => $this->getValidCard()
+                'cardId' => 2
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\UpdateProfileCardRequest', $request);

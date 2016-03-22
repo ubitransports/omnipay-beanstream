@@ -2,7 +2,7 @@
 
 class UpdateProfileRequest extends CreateProfileRequest
 {
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId();
     }

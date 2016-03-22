@@ -2,7 +2,7 @@
 
 class DeleteProfileCardRequest extends DeleteProfileRequest
 {
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId() . '/cards/' . $this->getCardId();
     }

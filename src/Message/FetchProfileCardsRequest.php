@@ -2,7 +2,7 @@
 
 class FetchProfileCardsRequest extends FetchProfileRequest
 {
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint . '/' . $this->getProfileId() . '/cards';
     }

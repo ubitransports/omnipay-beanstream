@@ -4,7 +4,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     protected $endpoint = 'https://www.beanstream.com/api/v1';
 
-    protected function getEndpoint()
+    public function getEndpoint()
     {
         return $this->endpoint;
     }
