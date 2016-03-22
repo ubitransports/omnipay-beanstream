@@ -4,8 +4,6 @@ class CreateProfileRequest extends AbstractProfileRequest
 {
     public function getData()
     {
-        $this->getCard()->validate();
-
         $data = array(
             'language' => $this->getLanguage(),
             'comment' => $this->getComment(),
@@ -13,6 +11,8 @@ class CreateProfileRequest extends AbstractProfileRequest
         );
 
         if ($this->getCard()) {
+            $this->getCard()->validate();
+
             $data['card'] = array(
                 'number' => $this->getCard()->getNumber(),
                 'name' => $this->getCard()->getName(),
