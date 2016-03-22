@@ -75,8 +75,8 @@ class PurchaseRequestTest extends TestCase
         $billing = array(
             'name' => 'test mann',
             'email_address' => 'testmann@email.com',
-            'street_address1' => '123 Test St',
-            'street_address2' => '',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
             'city' => 'vancouver',
             'province' => 'bc',
             'postal_code' => 'H0H0H0',
@@ -92,8 +92,8 @@ class PurchaseRequestTest extends TestCase
         $shipping = array(
             'name' => 'test mann',
             'email_address' => 'testmann@email.com',
-            'street_address1' => '123 Test St',
-            'street_address2' => '',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
             'city' => 'vancouver',
             'province' => 'bc',
             'postal_code' => 'H0H0H0',

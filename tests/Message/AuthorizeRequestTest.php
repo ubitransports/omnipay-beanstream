@@ -41,6 +41,18 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame('123', $this->request->getLanguage());
     }
 
+    public function testUsername()
+    {
+        $this->assertSame($this->request, $this->request->setUsername('123'));
+        $this->assertSame('123', $this->request->getUsername());
+    }
+
+    public function testPassword()
+    {
+        $this->assertSame($this->request, $this->request->setPassword('123'));
+        $this->assertSame('123', $this->request->getPassword());
+    }
+
     public function testComments()
     {
         $this->assertSame($this->request, $this->request->setComments('test'));
@@ -75,8 +87,8 @@ class AuthorizeRequestTest extends TestCase
         $billing = array(
             'name' => 'test mann',
             'email_address' => 'testmann@email.com',
-            'street_address1' => '123 Test St',
-            'street_address2' => '',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
             'city' => 'vancouver',
             'province' => 'bc',
             'postal_code' => 'H0H0H0',
@@ -92,8 +104,8 @@ class AuthorizeRequestTest extends TestCase
         $shipping = array(
             'name' => 'test mann',
             'email_address' => 'testmann@email.com',
-            'street_address1' => '123 Test St',
-            'street_address2' => '',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
             'city' => 'vancouver',
             'province' => 'bc',
             'postal_code' => 'H0H0H0',
