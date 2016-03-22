@@ -118,6 +118,43 @@ class PurchaseRequestTest extends TestCase
         $this->request->setCard($card);
         $data = $this->request->getData();
         $this->assertSame(true, $data['card']['complete']);
+        $this->assertSame('10.00', $this->request->getAmount());
+    }
+
+    public function testCardAndCardBillingAddress()
+    {
+        $this->request->setAmount('10.00');
+
+        $billing1 = array(
+            'name' => 'test mann',
+            'email_address' => 'testmann@email.com',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
+            'city' => 'vancouver',
+            'province' => 'bc',
+            'postal_code' => 'H0H0H0',
+            'phone_number' => '1 (555) 555-5555'
+        );
+
+        $billing2 = array(
+            'name' => 'Example User',
+            'address_line1' => '123 Billing St',
+            'address_line2' => 'Billsville',
+            'city' => 'Billstown',
+            'province' => 'CA',
+            'country' => 'US',
+            'postal_code' => '12345',
+            'phone_number' => '(555) 123-4567',
+            'email_address' => null
+        );
+
+        $card = $this->getValidCard();
+        $this->assertSame($this->request, $this->request->setCard($card));
+        $this->request->setBilling($billing1);
+        $data = $this->request->getData();
+        $this->assertSame($billing2, $data['billing']);
+        $this->assertNotSame($billing1, $data['billing']);
+        $this->assertSame('10.00', $this->request->getAmount());
     }
 
     public function testHttpMethod()

@@ -21,7 +21,9 @@ class CreateProfileRequest extends AbstractProfileRequest
                 'cvd' => $this->getCard()->getCvv(),
             );
 
-            if (!$this->getBilling()) {
+            $billing = $this->getBilling();
+
+            if (!empty($billing)) {
                 $data['billing'] = array(
                     'name' => $this->getCard()->getBillingName(),
                     'address_line1' => $this->getCard()->getBillingAddress1(),

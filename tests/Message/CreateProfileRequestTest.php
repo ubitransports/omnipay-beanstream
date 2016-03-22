@@ -70,9 +70,20 @@ class CreateProfileRequestTest extends TestCase
         $this->assertSame($token, $this->request->getToken());
     }
 
-    public function testCard()
+    public function testCardAndCardBillingAddress()
     {
-        $billing = array(
+        $billing1 = array(
+            'name' => 'test mann',
+            'email_address' => 'testmann@email.com',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
+            'city' => 'vancouver',
+            'province' => 'bc',
+            'postal_code' => 'H0H0H0',
+            'phone_number' => '1 (555) 555-5555'
+        );
+
+        $billing2 = array(
             'name' => 'Example User',
             'address_line1' => '123 Billing St',
             'address_line2' => 'Billsville',
@@ -86,9 +97,10 @@ class CreateProfileRequestTest extends TestCase
 
         $card = $this->getValidCard();
         $this->assertSame($this->request, $this->request->setCard($card));
-        $this->request->setCard($card);
+        $this->request->setBilling($billing1);
         $data = $this->request->getData();
-        $this->assertSame($billing, $data['billing']);
+        $this->assertSame($billing2, $data['billing']);
+        $this->assertNotSame($billing1, $data['billing']);
     }
 
     public function testHttpMethod()
