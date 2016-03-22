@@ -67,6 +67,8 @@ class AuthorizeRequestTest extends TestCase
 
     public function testToken()
     {
+        $this->request->setAmount('10.00');
+
         $token = array(
             'name' => 'token-test-name',
             'code' => 'token-test-code'
@@ -74,6 +76,25 @@ class AuthorizeRequestTest extends TestCase
 
         $this->assertSame($this->request, $this->request->setToken($token));
         $this->assertSame($token, $this->request->getToken());
+        $data = $this->request->getData();
+        $this->assertSame(false, $data['token']['complete']);
+        $this->assertSame('10.00', $this->request->getAmount());
+    }
+
+    public function testPaymentProfile()
+    {
+        $this->request->setAmount('10.00');
+
+        $paymentProfile = array(
+            'customer_code' => 'test-customer',
+            'card_id' => '1'
+        );
+
+        $this->assertSame($this->request, $this->request->setPaymentProfile($paymentProfile));
+        $this->assertSame($paymentProfile, $this->request->getPaymentProfile());
+        $data = $this->request->getData();
+        $this->assertSame(false, $data['payment_profile']['complete']);
+        $this->assertSame('10.00', $this->request->getAmount());
     }
 
     public function testPaymentMethod()

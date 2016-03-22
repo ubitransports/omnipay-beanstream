@@ -11,8 +11,7 @@ class AuthorizeRequest extends AbstractRequest
 
     public function getData()
     {
-        $this->validate('amount', 'card');
-        $this->getCard()->validate();
+        $this->validate('amount');
 
         $data = array(
             'amount' => $this->getAmount(),
@@ -27,6 +26,8 @@ class AuthorizeRequest extends AbstractRequest
         );
 
         if ($this->getCard()) {
+            $this->getCard()->validate();
+
             $data['card'] = array(
                 'number' => $this->getCard()->getNumber(),
                 'name' => $this->getCard()->getName(),
@@ -70,7 +71,7 @@ class AuthorizeRequest extends AbstractRequest
         }
 
         if ($this->getPaymentProfile()) {
-            $data['payment_profile'] = getPaymentProfile();
+            $data['payment_profile'] = $this->getPaymentProfile();
             $data['payment_profile']['complete'] = $this->complete;
         }
 

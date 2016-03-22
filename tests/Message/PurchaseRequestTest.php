@@ -55,6 +55,8 @@ class PurchaseRequestTest extends TestCase
 
     public function testToken()
     {
+        $this->request->setAmount('10.00');
+
         $token = array(
             'name' => 'token-test-name',
             'code' => 'token-test-code'
@@ -62,6 +64,25 @@ class PurchaseRequestTest extends TestCase
 
         $this->assertSame($this->request, $this->request->setToken($token));
         $this->assertSame($token, $this->request->getToken());
+        $data = $this->request->getData();
+        $this->assertSame(true, $data['token']['complete']);
+        $this->assertSame('10.00', $this->request->getAmount());
+    }
+
+    public function testPaymentProfile()
+    {
+        $this->request->setAmount('10.00');
+
+        $paymentProfile = array(
+            'customer_code' => 'test-customer',
+            'card_id' => '1'
+        );
+
+        $this->assertSame($this->request, $this->request->setPaymentProfile($paymentProfile));
+        $this->assertSame($paymentProfile, $this->request->getPaymentProfile());
+        $data = $this->request->getData();
+        $this->assertSame(true, $data['payment_profile']['complete']);
+        $this->assertSame('10.00', $this->request->getAmount());
     }
 
     public function testPaymentMethod()
@@ -148,12 +169,38 @@ class PurchaseRequestTest extends TestCase
             'email_address' => null
         );
 
+        $shipping1 = array(
+            'name' => 'test mann',
+            'email_address' => 'testmann@email.com',
+            'address_line1' => '123 Test St',
+            'address_line2' => '',
+            'city' => 'vancouver',
+            'province' => 'bc',
+            'postal_code' => 'H0H0H0',
+            'phone_number' => '1 (555) 555-5555'
+        );
+
+        $shipping2 = array(
+            'name' => 'Example User',
+            'address_line1' => '123 Billing St',
+            'address_line2' => 'Billsville',
+            'city' => 'Billstown',
+            'province' => 'CA',
+            'country' => 'US',
+            'postal_code' => '12345',
+            'phone_number' => '(555) 123-4567',
+            'email_address' => null
+        );
+
         $card = $this->getValidCard();
         $this->assertSame($this->request, $this->request->setCard($card));
-        $this->request->setBilling($billing1);
+        $this->assertSame($this->request, $this->request->setBilling($billing1));
+        $this->assertSame($this->request, $this->request->setShipping($shipping1));
         $data = $this->request->getData();
         $this->assertSame($billing2, $data['billing']);
+        $this->assertSame($shipping2, $data['shipping']);
         $this->assertNotSame($billing1, $data['billing']);
+        $this->assertNotSame($shipping1, $data['shipping']);
         $this->assertSame('10.00', $this->request->getAmount());
     }
 
