@@ -6,22 +6,22 @@ abstract class AbstractProfileRequest extends AbstractRequest
 
     public function getProfileId()
     {
-        return $this->getParameter('profileId');
+        return $this->getParameter('profile_id');
     }
 
     public function setProfileId($value)
     {
-        return $this->setParameter('profileId', $value);
+        return $this->setParameter('profile_id', $value);
     }
 
     public function getCardId()
     {
-        return $this->getParameter('cardId');
+        return $this->getParameter('card_id');
     }
 
     public function setCardId($value)
     {
-        return $this->setParameter('cardId', $value);
+        return $this->setParameter('card_id', $value);
     }
 
     public function getComment()

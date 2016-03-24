@@ -4,7 +4,8 @@ class FetchProfileRequest extends AbstractProfileRequest
 {
     public function getData()
     {
-        return array();
+        $this->validate('profile_id');
+        return;
     }
 
     public function getEndpoint()

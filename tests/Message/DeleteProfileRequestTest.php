@@ -23,4 +23,12 @@ class DeleteProfileRequestTest extends TestCase
     {
         $this->assertSame('DELETE', $this->request->getHttpMethod());
     }
+
+    public function testGetData()
+    {
+        $this->assertSame($this->request, $this->request->setProfileId('1'));
+        $this->assertSame('1', $this->request->getProfileId());
+        $this->assertNull($this->request->getData());
+        $this->assertSame('DELETE', $this->request->getHttpMethod());
+    }
 }

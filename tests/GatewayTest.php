@@ -94,7 +94,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->fetchProfile(
             array(
-                'profileId' => 1
+                'profile_id' => 1
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\FetchProfileRequest', $request);
@@ -106,7 +106,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->updateProfile(
             array(
-                'profileId' => 1,
+                'profile_id' => 1,
                 'language' => 'test-language',
                 'comment' => 'test-comment'
             )
@@ -122,7 +122,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->deleteProfile(
             array(
-                'profileId' => 1,
+                'profile_id' => 1,
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\DeleteProfileRequest', $request);
@@ -134,7 +134,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->createProfileCard(
             array(
-                'profileId' => 1
+                'profile_id' => 1
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\CreateProfileCardRequest', $request);
@@ -146,7 +146,7 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->fetchProfileCards(
             array(
-                'profileId' => 1
+                'profile_id' => 1
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\FetchProfileCardsRequest', $request);
@@ -158,8 +158,8 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->updateProfileCard(
             array(
-                'profileId' => 1,
-                'cardId' => 2
+                'profile_id' => 1,
+                'card_id' => 2
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\UpdateProfileCardRequest', $request);
@@ -172,8 +172,8 @@ class GatewayTest extends GatewayTestCase
     {
         $request = $this->gateway->deleteProfileCard(
             array(
-                'profileId' => 1,
-                'cardId' => 2
+                'profile_id' => 1,
+                'card_id' => 2
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\DeleteProfileCardRequest', $request);
