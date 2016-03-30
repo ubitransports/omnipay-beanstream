@@ -12,39 +12,7 @@ X-AspNet-Version: 4.0.30319
 X-Powered-By: ASP.NET
 
 {
-	"code": 1,
-	"message": "Operation Successful",
-	"customer_code": "9ba60541d32648B1A3581670123dF2Ef",
-	"status": "A",
-	"last_transaction": "1900-01-01T00:00:00",
-	"modified_date": "2016-03-30T10:22:11",
-	"card": {
-		"name": "Test Guy",
-		"number": "403000XXXXXX1234",
-		"expiry_month": "01",
-		"expiry_year": "18",
-		"card_type": "VI"
-	},
-	"language": "en",
-	"velocity_group": "",
-	"profile_group": "",
-	"account_ref": "",
-	"billing": {
-		"name": "Test Guy",
-		"address_line1": "123 Test St",
-		"address_line2": "",
-		"city": "Vancouver",
-		"province": "BC",
-		"country": "CA",
-		"postal_code": "V6H1L3",
-		"phone_number": "1(555)555-5555",
-		"email_address": "andy@lemonstand.com"
-	},
-	"custom": {
-		"ref1": "",
-		"ref2": "",
-		"ref3": "",
-		"ref4": "",
-		"ref5": ""
-	}
+    "code": 1,
+    "message": "Operation Successful",
+    "customer_code": "8F10Ab54FC434b71972cF2E442c0fb4f"
 }
