@@ -39,7 +39,7 @@ class AuthorizeRequest extends AbstractRequest
 
             $billing = $this->getBilling();
 
-            if (!empty($billing)) {
+            if (empty($billing)) {
                 $data['billing'] = array(
                     'name' => $this->getCard()->getBillingName(),
                     'address_line1' => $this->getCard()->getBillingAddress1(),
@@ -55,7 +55,7 @@ class AuthorizeRequest extends AbstractRequest
 
             $shipping = $this->getShipping();
 
-            if (!empty($shipping)) {
+            if (empty($shipping)) {
                 $data['shipping'] = array(
                     'name' => $this->getCard()->getShippingName(),
                     'address_line1' => $this->getCard()->getShippingAddress1(),

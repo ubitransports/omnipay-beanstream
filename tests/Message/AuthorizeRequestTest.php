@@ -226,8 +226,8 @@ class AuthorizeRequestTest extends TestCase
         $this->assertSame($this->request, $this->request->setCard($card));
         $this->request->setBilling($billing1);
         $data = $this->request->getData();
-        $this->assertSame($billing2, $data['billing']);
-        $this->assertNotSame($billing1, $data['billing']);
+        $this->assertNotSame($billing2, $data['billing']);
+        $this->assertSame($billing1, $data['billing']);
         $this->assertSame('10.00', $this->request->getAmount());
     }
 

@@ -238,10 +238,10 @@ class PurchaseRequestTest extends TestCase
         $this->assertSame($this->request, $this->request->setBilling($billing1));
         $this->assertSame($this->request, $this->request->setShipping($shipping1));
         $data = $this->request->getData();
-        $this->assertSame($billing2, $data['billing']);
-        $this->assertSame($shipping2, $data['shipping']);
-        $this->assertNotSame($billing1, $data['billing']);
-        $this->assertNotSame($shipping1, $data['shipping']);
+        $this->assertNotSame($billing2, $data['billing']);
+        $this->assertNotSame($shipping2, $data['shipping']);
+        $this->assertSame($billing1, $data['billing']);
+        $this->assertSame($shipping1, $data['shipping']);
         $this->assertSame('10.00', $this->request->getAmount());
     }
 
