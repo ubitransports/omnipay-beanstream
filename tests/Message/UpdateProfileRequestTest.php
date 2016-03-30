@@ -97,6 +97,7 @@ class UpdateProfileRequestTest extends TestCase
 
     public function testCardAndCardBillingAddress()
     {
+        $this->request->setProfileId('9ba60541d32648B1A3581670123dF2Ef');
         $billing1 = array(
             'name' => 'test mann',
             'email_address' => 'testmann@email.com',

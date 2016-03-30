@@ -6,7 +6,7 @@ class UpdateProfileCardRequest extends CreateProfileCardRequest
     {
         $this->validate('profile_id');
         $this->validate('card_id');
-        return;
+        return parent::getData();
     }
 
     public function getEndpoint()
