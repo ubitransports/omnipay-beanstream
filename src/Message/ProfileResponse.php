@@ -7,7 +7,8 @@ class ProfileResponse extends Response
 {
     public function isSuccessful()
     {
-        return (isset($this->data['message']) && $this->data['message'] === "Operation Successful") && (isset($this->data['code']) && $this->data['code'] === 1);
+        return (isset($this->data['message']) && $this->data['message'] === "Operation Successful")
+         && (isset($this->data['code']) && $this->data['code'] === 1);
     }
 
     public function getCustomerCode()
