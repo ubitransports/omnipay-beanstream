@@ -157,12 +157,19 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
             }
         );
 
-        $httpRequest = $this->httpClient->createRequest(
-            $this->getHttpMethod(),
-            $this->getEndpoint(),
-            null,
-            json_encode($data)
-        );
+        if (!empty($data)) {
+            $httpRequest = $this->httpClient->createRequest(
+                $this->getHttpMethod(),
+                $this->getEndpoint(),
+                null,
+                json_encode($data)
+            );
+        } else {
+            $httpRequest = $this->httpClient->createRequest(
+                $this->getHttpMethod(),
+                $this->getEndpoint()
+            );
+        }
 
         $httpResponse = $httpRequest
             ->setHeader(

@@ -12,6 +12,26 @@ class CreateProfileRequestTest extends TestCase
         $this->request->initialize();
     }
 
+    public function testSendSuccess()
+    {
+        $this->setMockHttpResponse('CreateProfileSuccess.txt');
+        $response = $this->request->send();
+        $this->assertTrue($response->isSuccessful());
+        $this->assertSame(1, $response->getCode());
+        $this->assertSame('Operation Successful', $response->getMessage());
+        $this->assertSame('9ba60541d32648B1A3581670123dF2Ef', $response->getCustomerCode());
+    }
+
+    public function testSendError()
+    {
+        $this->setMockHttpResponse('CreateProfileFailure.txt');
+        $response = $this->request->send();
+        $this->assertFalse($response->isSuccessful());
+        $this->assertSame(17, $response->getCode());
+        $this->assertSame(2, $response->getCategory());
+        $this->assertSame('Duplicate match on payment information', $response->getMessage());
+    }
+
     public function testEndpoint()
     {
         $this->assertSame('https://www.beanstream.com/api/v1/profiles', $this->request->getEndpoint());

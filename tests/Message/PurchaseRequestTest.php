@@ -223,13 +223,13 @@ class PurchaseRequestTest extends TestCase
 
         $shipping2 = array(
             'name' => 'Example User',
-            'address_line1' => '123 Billing St',
-            'address_line2' => 'Billsville',
-            'city' => 'Billstown',
-            'province' => 'CA',
+            'address_line1' => '123 Shipping St',
+            'address_line2' => 'Shipsville',
+            'city' => 'Shipstown',
+            'province' => 'NY',
             'country' => 'US',
-            'postal_code' => '12345',
-            'phone_number' => '(555) 123-4567',
+            'postal_code' => '54321',
+            'phone_number' => '(555) 987-6543',
             'email_address' => null
         );
 
