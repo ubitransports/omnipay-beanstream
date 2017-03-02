@@ -185,33 +185,57 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('DELETE', $request->getHttpMethod());
     }
 
+    /**
+     * Test the creation of a RefundRequest object
+     */
     public function testRefund()
     {
         $request = $this->gateway->refund(
             array(
-                'transactionReference'=>1,
+                'transactionReference'=>100,
                 'amount'=> 10.00
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\RefundRequest', $request);
-        $this->assertSame(1, $request->getTransactionReference());
+        $this->assertSame(100, $request->getTransactionReference());
         $this->assertSame('10.00', $request->getAmount());
         $this->assertSame('POST', $request->getHttpMethod());
-        $this->assertSame('https://www.beanstream.com/api/v1/payments/1/returns', $request->getEndpoint());
+        $this->assertSame('https://www.beanstream.com/api/v1/payments/100/returns', $request->getEndpoint());
     }
 
+    /**
+     * Test the creation of a VoidRequest object
+     */
     public function testVoid()
     {
         $request = $this->gateway->void(
             array(
-                'transactionReference'=>1,
+                'transactionReference'=>100,
                 'amount'=> 10.00
             )
         );
         $this->assertInstanceOf('Omnipay\Beanstream\Message\VoidRequest', $request);
-        $this->assertSame(1, $request->getTransactionReference());
+        $this->assertSame(100, $request->getTransactionReference());
         $this->assertSame('10.00', $request->getAmount());
         $this->assertSame('POST', $request->getHttpMethod());
-        $this->assertSame('https://www.beanstream.com/api/v1/payments/1/void', $request->getEndpoint());
+        $this->assertSame('https://www.beanstream.com/api/v1/payments/100/void', $request->getEndpoint());
+    }
+
+    /**
+     * Test the creation of a CaptureRequest object
+     */
+    public function testCapture()
+    {
+        $request = $this->gateway->capture(
+            array(
+                'transactionReference'=>100,
+                'amount'=>10.00
+            )
+        );
+        $this->assertInstanceOf('Omnipay\Beanstream\Message\CaptureRequest', $request);
+        $this->assertSame(100, $request->getTransactionReference());
+        $this->assertSame('10.00', $request->getAmount());
+        $this->assertSame('POST', $request->getHttpMethod());
+        $this->assertSame('https://www.beanstream.com/api/v1/payments/100/completions', $request->getEndpoint());
     }
 }

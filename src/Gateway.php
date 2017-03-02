@@ -104,6 +104,16 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
+     *
+     * @return \Omnipay\Beanstream\Message\CaptureRequest
+     */
+    public function capture(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\CaptureRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
      * @return \Omnipay\Beanstream\Message\CreateProfileRequest
      */
     public function createProfile(array $parameters = array())
