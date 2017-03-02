@@ -4,6 +4,9 @@ use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase
 {
+    /** @var  Gateway */
+    protected $gateway;
+
     public function setUp()
     {
         parent::setUp();
@@ -180,5 +183,35 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame(1, $request->getProfileId());
         $this->assertSame(2, $request->getCardId());
         $this->assertSame('DELETE', $request->getHttpMethod());
+    }
+
+    public function testRefund()
+    {
+        $request = $this->gateway->refund(
+            array(
+                'transactionReference'=>1,
+                'amount'=> 10.00
+            )
+        );
+        $this->assertInstanceOf('Omnipay\Beanstream\Message\RefundRequest', $request);
+        $this->assertSame(1, $request->getTransactionReference());
+        $this->assertSame('10.00', $request->getAmount());
+        $this->assertSame('POST', $request->getHttpMethod());
+        $this->assertSame('https://www.beanstream.com/api/v1/payments/1/returns', $request->getEndpoint());
+    }
+
+    public function testVoid()
+    {
+        $request = $this->gateway->void(
+            array(
+                'transactionReference'=>1,
+                'amount'=> 10.00
+            )
+        );
+        $this->assertInstanceOf('Omnipay\Beanstream\Message\VoidRequest', $request);
+        $this->assertSame(1, $request->getTransactionReference());
+        $this->assertSame('10.00', $request->getAmount());
+        $this->assertSame('POST', $request->getHttpMethod());
+        $this->assertSame('https://www.beanstream.com/api/v1/payments/1/void', $request->getEndpoint());
     }
 }
