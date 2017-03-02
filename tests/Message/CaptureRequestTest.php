@@ -50,7 +50,7 @@ class CaptureRequestTest extends TestCase
         $this->assertSame('Approved', $response->getMessage());
         $this->assertSame('1', $response->getMessageId());
         $this->assertSame('TEST', $response->getAuthCode());
-        $this->assertSame('PC', $response->getType());
+        $this->assertSame('PAC', $response->getType());
         $this->assertNull($response->getCode());
         $responseCard = $response->getCard();
         $this->assertNotEmpty($responseCard);
