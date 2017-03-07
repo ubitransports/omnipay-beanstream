@@ -84,6 +84,36 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
+     *
+     * @return \Omnipay\Beanstream\Message\RefundRequest
+     */
+    public function refund(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\RefundRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return \Omnipay\Beanstream\Message\VoidReqeust
+     */
+    public function void(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\VoidRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
+     *
+     * @return \Omnipay\Beanstream\Message\CaptureRequest
+     */
+    public function capture(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\Beanstream\Message\CaptureRequest', $parameters);
+    }
+
+    /**
+     * @param array $parameters
      * @return \Omnipay\Beanstream\Message\CreateProfileRequest
      */
     public function createProfile(array $parameters = array())
