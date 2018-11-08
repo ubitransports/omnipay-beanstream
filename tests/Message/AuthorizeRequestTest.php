@@ -186,7 +186,7 @@ class AuthorizeRequestTest extends TestCase
             'number' => '4111111111111111',
             'cvd' => '123',
             'expiry_month' => '01',
-            'expiry_year' => '2019'
+            'expiry_year' => '2020'
         );
 
         $this->request->setCard($card);
