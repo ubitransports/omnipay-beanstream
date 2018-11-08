@@ -147,7 +147,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function sendData($data)
     {
         $header = base64_encode($this->getMerchantId() . ':' . $this->getApiPasscode());
-        // Don't throw exceptions for 4xx errors
         
         if (!empty($data)) {
             $httpResponse = $this->httpClient->request(
