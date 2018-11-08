@@ -9,7 +9,7 @@ class ResponseTest extends TestCase
     public function testPurchaseSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new Response($this->getMockRequest(), $httpResponse->getBody());
         $this->assertTrue($response->isSuccessful());
         $this->assertSame('1000001', $response->getTransactionReference());
         $this->assertSame('1', $response->getOrderNumber());
@@ -30,7 +30,7 @@ class ResponseTest extends TestCase
     public function testPurchaseFailure()
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new Response($this->getMockRequest(), $httpResponse->getBody());
         $this->assertSame(49, $response->getCode());
         $this->assertSame(3, $response->getCategory());
         $this->assertSame('Invalid transaction request string', $response->getMessage());
@@ -48,7 +48,7 @@ class ResponseTest extends TestCase
     public function testAuthorizeSuccess()
     {
         $httpResponse = $this->getMockHttpResponse('AuthorizeSuccess.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new Response($this->getMockRequest(), $httpResponse->getBody());
         $this->assertTrue($response->isSuccessful());
         $this->assertSame('1000001', $response->getTransactionReference());
         $this->assertSame('1', $response->getOrderNumber());
@@ -69,7 +69,7 @@ class ResponseTest extends TestCase
     public function testAuthorizeFailure()
     {
         $httpResponse = $this->getMockHttpResponse('AuthorizeFailure.txt');
-        $response = new Response($this->getMockRequest(), $httpResponse->json());
+        $response = new Response($this->getMockRequest(), $httpResponse->getBody());
         $this->assertSame(49, $response->getCode());
         $this->assertSame(3, $response->getCategory());
         $this->assertSame('Invalid transaction request string', $response->getMessage());
