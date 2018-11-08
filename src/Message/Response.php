@@ -8,7 +8,7 @@ class Response extends AbstractResponse
     public function __construct(RequestInterface $request, $data)
     {
         $this->request = $request;
-        parse_str($data, $this->data);
+        $this->data = json_decode($data, true);
     }
 
     public function isSuccessful()
