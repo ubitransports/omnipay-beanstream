@@ -59,6 +59,6 @@ abstract class AbstractProfileRequest extends AbstractRequest
             );
         }
 
-        return $this->response = new Response($this, $httpResponse->getBody()->getContents());
+        return $this->response = new ProfileResponse($this, $httpResponse->getBody()->getContents());
     }
 }
