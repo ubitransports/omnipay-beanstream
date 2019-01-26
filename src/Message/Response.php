@@ -5,6 +5,12 @@ use Omnipay\Common\Message\RequestInterface;
 
 class Response extends AbstractResponse
 {
+    public function __construct(RequestInterface $request, $data)
+    {
+        $this->request = $request;
+        $this->data = json_decode($data, true);
+    }
+
     public function isSuccessful()
     {
         return (isset($this->data['approved']) && $this->data['approved'] === "1");
